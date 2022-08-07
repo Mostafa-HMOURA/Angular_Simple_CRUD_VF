@@ -1,0 +1,33 @@
+
+<div class="row">
+    <div class="col-md-4 mt-5 mx-auto">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="form-label mt-4">Email</label>
+              <input formControlName="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.touched) || (loginForm.get('email')?.dirty)">
+                <div *ngIf="loginForm.get('email')?.getError('required')">This Filed is required !</div>
+                <div *ngIf="loginForm.get('email')?.getError('email')">This Filed Should be Email address</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="form-label mt-4">Password</label>
+              <input formControlName="password" [maxLength]="8" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.touched) || (loginForm.get('password')?.dirty)">
+                <div *ngIf="loginForm.get('password')?.getError('required')">This Filed is required !</div>
+                <div *ngIf="loginForm.get('password')?.getError('minlength')">This Filed Should be 8 Characters</div>
+                <div *ngIf="loginForm.get('password')?.getError('maxlength')">This Filed Should be 8 Characters</div>
+              </div>
+            </div>
+
+            {{loginForm.value | json}}
+
+            <div class="mt-3 d-grid gap-2" >
+                <button [disabled]="loginForm.invalid" class="btn btn-primary" type="submit">Login</button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+

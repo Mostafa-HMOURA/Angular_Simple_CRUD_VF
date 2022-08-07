@@ -1,0 +1,41 @@
+
+
+<div class="row my-3">
+    <div class="col-md-6">
+        <h2>list of Adresses</h2>
+    </div>
+    <div class="col-md-6 text-right">
+        <button class="btn btn-primary" routerLink="/address/create">New</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6" *ngFor="let address of addresses">
+        <div class="card border-primary mb-3">
+            <div class="card-header"><b>ID : {{address.addressId}}</b></div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        City : {{address.city}}
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Country : {{address.country}}
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Postal : {{address.postal}}
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Street : {{address.street}}
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Type : {{address.type}}
+                    </li>
+                    <li class="list-group-item text-center">
+                        <button class="btn btn-warning bt1">Edit</button>
+                        <button class="btn btn-danger" (click)="destroyClient(address.addressId)">Delete</button>
+                      </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
